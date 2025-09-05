@@ -1,0 +1,39 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  title Document
+  link(rel='stylesheet' href='/CSS/stock.css')
+.container
+  .form-section
+    h2 Record a Stock
+    form(action='/signup' method='post')
+      label(for='customerName') Customer Name:
+      input#customerName(type='text' name='customerName' required='')
+      label(for='productName') Product Name:
+      input#productName(type='text' name='productName' required='')
+      label(for='productType') Product Type:
+      select#productType(required='')
+        option(value='wood') Wood
+        option(value='furniture') Furniture
+      label(for='quantity') Quantity:
+      input#quantity(type='number' name='quantity' required='')
+      label(for='pricePerItem') Selling Price (UGX):
+      input#pricePerItem(type='number' name='pricePerItem' required='')
+      label(for='transport') Include Transport?
+      select#transport(required='')
+        option(value='no') No
+        option(value='yes') Yes (Add 5%)
+      label(for='paymentType') Payment Type:
+      select#paymentType(required='')
+        option(value='cash') Cash
+        option(value='cheque') Cheque
+        option(value='bank overdraft') Bank Overdraft
+      label(for='salesAgent') Sales Agent Name:
+      input#salesAgent(type='text' name='salesAgent' required='')
+      label(for='saleDate') Sale Date:
+      input#saleDate(type='date' name='salesDate' required='')
+      p.total-amount
+        | Total Price: 
+        span#totalDisplay UGX 0
+      button(type='submit') Save Sale

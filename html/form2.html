@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div class="container">
+    <h2>Login Form</h2>
+    <form id="loginForm" method="post">
+      <label for="user name"> User Name</label>
+      <input type="text" name="full name" id="username" required>
+
+      <label for="email">Email</label>
+      <input type="email" name="email" id="email" required>
+
+      <label for="password">Password</label>
+      <input type="password" name="passward" id="password" required>
+
+      <label for="loginRole">Role</label>
+      <select id="loginRole">
+        <option value="manager">Manager</option>
+        <option value="user">User</option>
+        <option value="sales agent">Sales Agent</option>
+      </select>
+      <button type="submit" class="btn btn-primary w-100">LOGIN</button>
+</body>
+
+</html>

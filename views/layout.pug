@@ -1,0 +1,20 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  title Sales Page with Form
+  link(rel='stylesheet' href='/public/CSS/sales.css')
+// Header
+header
+  h1 Welcome to Our Sales Page
+nav
+  .logo MyShop
+  .menu-toggle(onclick='toggleMenu()') &#x2630;
+  #navLinks.nav-links
+    a(href='#home') Home
+    a(href='#products') Products
+    a(href='#offers') Offers
+    a(href='#order') Order
+    a(href='#contact') Contact 
+  body  
+        block content 

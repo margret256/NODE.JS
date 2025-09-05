@@ -1,0 +1,21 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  title Document
+  link(rel='stylesheet' href='/css/style.css')
+.container
+  h2 Login Form
+  form#loginForm( action="/login" method='post')
+    label(for='user name')  User Name
+    input#username(type='text' name='full name' required='')
+    label(for='email') Email
+    input#email(type='email' name='email' required='')
+    label(for='password') Password
+    input#password(type='password' name='passward' required='')
+    label(for='loginRole') Role
+    select#loginRole
+      option(value='manager') Manager
+      option(value='user') User
+      option(value='sales agent') Sales Agent
+    button.btn.btn-primary.w-100(type='submit') LOGIN

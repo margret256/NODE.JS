@@ -1,0 +1,28 @@
+extends layout 
+block content 
+        // Order Form
+        section
+        h2 Place Your Order
+        .form-container
+            form(action='#' method='post')
+            label(for='name') Full Name
+            input#name(type='text' name='name' placeholder='Enter your full name' required='')
+            label(for='email') Email Address
+            input#email(type='email' name='email' placeholder='Enter your email' required='')
+            label(for='phone') Phone Number
+            input#phone(type='tel' name='phone' placeholder='+123 456 7890' required='')
+            label(for='product') Select Product
+            select#product(name='product' required='')
+                option(value='') --Choose a product--
+                option(value='product1') Product 1 - $25
+                option(value='product2') Product 2 - $40
+                option(value='product3') Product 3 - $60
+            label(for='quantity') Quantity
+            input#quantity(type='number' name='quantity' min='1' value='1' required='')
+            label(for='address') Delivery Address
+            textarea#address(name='address' rows='4' placeholder='Enter your delivery address' required='')
+            button(type='submit') Submit Order
+        // Footer
+        footer
+        p Email: sales@example.com | Phone: +123 456 7890
+        p &copy; 2025 My Shop. All rights reserved.

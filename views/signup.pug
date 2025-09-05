@@ -1,0 +1,26 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  title Document
+  link(rel='stylesheet' href='/CSS/signup.css')
+form(action='/signup' method='post')
+  .mb-3
+    label.form-label(for='exampleInputFullname') Full Name
+    input#exampleInputFullname.form-control(type='fullname' name='fullname')
+  .mb-3
+    label.form-label(for='exampleInputEmail1') Email address
+    input#exampleInputEmail1.form-control(type='text' name='email')
+  .mb-3
+    label.form-label(for='exampleInputEmail1') Phone Number
+    input#exampleInputphonenumber.form-control(type='number' name='phonenumber')
+  .mb-3
+    label.form-label(for='exampleInputPassword1') Password
+    input#exampleInputPassword1.form-control(type='password' name='passward')
+    label(for='loginRole') Role
+    select#loginRole(name="role" required)
+      option(value='manager') Manager
+      option(value='user') User
+      option(value='sales agent') Sales Agent
+
+    button.btn.btn-primary(type='submit') Submit
