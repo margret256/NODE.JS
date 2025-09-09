@@ -2,14 +2,19 @@
 const express = require("express");
 const path = require("path");
 const mongoose = require('mongoose');
-
+const passport = require("passport");
+const expressSession = require('express-session')
+const MongoStore =require('connect-mongo')
 require('dotenv').config();
 
+const UserModel = require("./models/userModel")
 // import routes
 const classRoutes = require("./routes/classRoutes");
 const authRoutes =require('./routes/authRoutes');
 const stockRoutes = require('./routes/recordstockRoutes');
 const salesRoutes = require('./routes/recordsalesRoutes');
+const dashboardRoutes = require('./routes/dashboardRoutes');
+const { Session } = require("inspector/promises");
 // 2.Instantiations
 
 const app = express();
@@ -42,6 +47,22 @@ app.set("views", path.join(__dirname, "views"));
 // app.use(express.static('public'));// specifies where the static files are.
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: true })); //helps to pass data from forms
+// express session configs
+app.use(expressSession({
+  secret: process.env.Session_SECRET,
+  resave:false,
+  saveUninitialized:false,
+  store:MongoStore.create({mongoUrl:process.env.MONGODB_URL}),
+  cookie:{maxAge:24*60*60*1000} //oneday
+}))
+// passort configs 
+app.use(passport.initialize());
+app.use(passport.session())
+
+// authenticate with passport local strategy
+passport.use(UserModel.createStrategy());
+passport.deserializeUser(UserModel.deserializeUser());
+passport.serializeUser(UserModel.serializeUser());
 
 app.get("/Margret", (req, res) => {
   res.send("That is my name");
@@ -80,6 +101,9 @@ app.use("/", classRoutes);
 app.use('/', authRoutes);
 app.use('/', stockRoutes);
 app.use('/', salesRoutes);
+app.use('/', dashboardRoutes);
+
+
 
 
 
