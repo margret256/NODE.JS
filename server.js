@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 const passport = require("passport");
 const expressSession = require('express-session')
 const MongoStore =require('connect-mongo')
+const moment =require('moment')
 require('dotenv').config();
 
 const UserModel = require("./models/userModel")
@@ -25,6 +26,7 @@ const port = 3001; // you can change the port here always
 //     res.send('Homepage! Hello world.')
 //     })
 // 3. Configurations
+app.locals.moment = moment;
 // setting up mongodb connectons
 mongoose.connect(process.env.MONGODB_URL, {
   // useNewUrlParser: true,

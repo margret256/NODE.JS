@@ -1,0 +1,42 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  title Stock Table
+  link(rel='stylesheet' href='/CSS/stocktable.css')
+h2 Stock Inventory
+table
+  thead
+    tr
+      th Customer Name
+      th Product Name
+      th Quantity
+      th PricePeritem 
+      th Sales Agent
+      th Sales Date
+      th Update
+      th Delete
+  tbody
+    if items.length
+        each item in items
+          tr 
+          td #{item.customerName}
+          td #{item.productName}
+          td #{item.quantity}
+          td #{item.pricePerItem}
+          td #{item.salesAgent}
+          td #{moment(item.salesDate).format("DD-MM-YYYY")}
+          td
+            form(method='post' action='/editstock')
+            input(type='hidden' name='id' value=tem_id)
+            button.btn.btn-danger.btn-block(type='submit') Edit
+          td
+            form(method='post' action='/deletestock')
+            input(type='hidden' name='id' value=item_id)
+            button.btn.btn-danger.btn-block(type='submit') Delete 
+
+
+
+
+
+            

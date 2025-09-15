@@ -46,7 +46,7 @@ router.post(
       res.redirect("/recordstock");
     } else if (req.user.role === "sales Agent") {
       res.redirect("recordstock");
-    } else res.render("noneuser");
+    } else res.render("recordstock");
   }
 );
 
@@ -57,8 +57,17 @@ router.get("/logout", (req, res) => {
       if (error) {
         return res.status(500).send("error logging out");
       }
-      res.redirect("/");
+      res.redirect("/dashboard");
     });
+  }
+});
+
+router.get("/users", async (req, res) => {
+  try {
+    let users = await UserModel.find().sort({ $natural: -1 });
+    res.render("usertable", {users});
+  } catch (error) {
+    res.status(400).send("Unable to get users from the database.");
   }
 });
 

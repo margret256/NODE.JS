@@ -1,0 +1,22 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  title Users | Dashboard
+  link(rel='stylesheet' href='/CSS/user.css')
+h1 Users Management
+table
+  thead
+    tr
+      th Name
+      th Email
+      th Phone Number
+      th Role
+    tbody
+        if users.length
+            each user in users
+                tr
+                td #{user.fullname}
+                td #{user. email}
+                td #{user.phonenumber}
+                td #{user.role}

@@ -1,0 +1,34 @@
+doctype html
+html
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    title Stock Table
+    link(rel='stylesheet' href='/CSS/stocktable.css')
+  body
+    h2 Stock Inventory
+    table
+      thead
+        tr
+          th Customer Name
+          th Product Name
+          th Quantity
+          th Price Per Item
+          th Sales Agent
+          th Sales Date
+          th Actions
+      tbody
+        if items.length
+          each item in items
+            tr 
+              td #{item.customerName}
+              td #{item.productName}
+              td #{item.quantity}
+              td #{item.pricePerItem}
+              td #{item.salesAgent}
+              td #{moment(item.salesDate).format("DD-MM-YYYY")}
+              td
+                a.btns(href=`/stock/editstock/${item._id}`) Edit
+        else
+          tr
+            td(colspan="7") No stock items found
